@@ -1,52 +1,50 @@
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class login extends StatefulWidget {
+  const login({super.key});
    
   @override
-  State<Login> createState() => _LoginScreenState();
+  State<login> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<Login> {
+class _LoginScreenState extends State<login> {
    @override
     Widget build(BuildContext context) {
-  String title = "hola";
+  String title = "inicio";
   final TextEditingController userController = TextEditingController();
   final TextEditingController passController = TextEditingController();
     return Scaffold(
       appBar: AppBar(title: Text(title)),
-        body: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
+        body: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextField(
                 controller: userController,
-                decoration: const InputDecoration(
+                decoration:  InputDecoration(
                   labelText: "Usuario",
                 ),
               ),
               TextField(
                 controller: passController,
-                decoration: const InputDecoration(
+                decoration:  InputDecoration(
                   labelText: "Contraseña",
-                ),
-                obscureText: true,
+                )
               ),
-              const SizedBox(height: 20),
+               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
                   if (userController.text.isEmpty || passController.text.isEmpty){
                      ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text("Completa todo")),
+                       SnackBar(content: Text("Completa todo")),
                     );
                   } 
                   else if (userController.text == "rama" &&
                       passController.text == "49722") {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text("Login bien")),
+                       SnackBar(content: Text("Login bien")),
                      
                     );
                     context.go ('/home');
@@ -55,15 +53,14 @@ class _LoginScreenState extends State<Login> {
                     });
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text("Login mal")),
+                       SnackBar(content: Text("Login mal")),
                     );
                   }
                 },
-                child: const Text("Ingresar"),
+                child:  Text("Ingresar"),
               ),
             ],
           ),
-      )
-    );
+      );
   }
 }
